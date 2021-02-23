@@ -64,3 +64,46 @@ const maximumWealth = (accounts) => {
 
   return Math.max(...sums);
 };
+
+/*
+
+Date: 2/22/21 
+Site: Leetcode
+Level: Easy
+Problem: 
+
+Given an array of integers nums.
+
+A pair (i,j) is called good if nums[i] == nums[j] and i < j.
+
+Return the number of good pairs.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3,1,1,3]
+Output: 4
+Explanation: There are 4 good pairs (0,3), (0,4), (3,4), (2,5) 0-indexed.
+
+Solution:
+*/
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var numIdenticalPairs = function (nums) {
+  let counter = 0;
+  let runs = nums.length - 1;
+  while (runs > 0) {
+    let i = 0;
+    for (let j = 1; j < nums.length; j++) {
+      if (nums[i] == nums[j]) {
+        counter++;
+      }
+    }
+    nums.shift();
+    runs--;
+  }
+  return counter;
+};
