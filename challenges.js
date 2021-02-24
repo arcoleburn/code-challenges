@@ -107,3 +107,11 @@ var numIdenticalPairs = function (nums) {
   }
   return counter;
 };
+
+
+/*
+2/23/21 
+
+attempted the grid illumination problem (dropbox practice) and could not solve. worked for small data sets, but not large
+
+*/ 
