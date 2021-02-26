@@ -46,7 +46,8 @@ const solveKeyPads = (wordList, keypads) => {
   let totalWords = wordList.length; //O1
 
   //create word maps
-  for (let i = 0; i < totalWords; i++) { //0(n)
+  for (let i = 0; i < totalWords; i++) {
+    //0(n)
     let wordMap = {};
     for (let j = 0; j < wordList[i].length; j++) {
       wordMap[wordList[i][j]] = 1;
@@ -91,5 +92,45 @@ const solveKeyPads = (wordList, keypads) => {
   return solution;
 };
 
-console.log(naiveKeypads(wordlist,keypads))
+console.log(naiveKeypads(wordlist, keypads));
 console.log(solveKeyPads(wordlist, keypads));
+
+/// 2.26 version
+
+function numKeypadSolutions(wordlist, keypads) {
+  let finalSolution = [];
+
+  //loop over keypads
+  for (let i = 0; i < keypads.length; i++) {
+    let ans = 0;
+    let keyMap = {};
+
+    // //loop over indiv keypad and create map
+    // for (let j =0; j<7; j++){
+    //     keyMap[keypads[i][j]] = 1
+    // }
+
+    //loop over word list
+    for (let k = 0; k < wordlist.length; k++) {
+      //if key letter not present in word, move on
+      if (wordlist[k].indexOf(keypads[i][0]) == -1) {
+        continue;
+      }
+      //loop over word on word list
+      for (let l = 0; l < wordlist[k].length; l++) {
+        //if current keypad does not include letter, move on
+        if (keypads[i].indexOf(wordlist[k][l]) == -1) {
+          break;
+          //else if end of word reached keypad includes last letter, add one to score
+        } else if (
+          l == wordlist[k].length - 1 &&
+          keypads[i].indexOf(wordlist[k][l]) !== -1
+        ) {
+          ans += 1;
+        }
+      }
+    }
+    finalSolution.push(ans);
+  }
+  return finalSolution;
+}
