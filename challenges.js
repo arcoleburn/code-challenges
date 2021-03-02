@@ -108,10 +108,50 @@ var numIdenticalPairs = function (nums) {
   return counter;
 };
 
-
 /*
 2/23/21 
 
 attempted the grid illumination problem (dropbox practice) and could not solve. worked for small data sets, but not large
 
-*/ 
+*/
+
+/*
+
+Date: 3/1
+Site: codewars
+Level: 6kyu
+Problem: 
+
+Given: an array containing hashes of names
+
+Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand.
+
+Example:
+
+list([ {name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'} ])
+// returns 'Bart, Lisa & Maggie'
+
+list([ {name: 'Bart'}, {name: 'Lisa'} ])
+// returns 'Bart & Lisa'
+
+list([ {name: 'Bart'} ])
+// returns 'Bart'
+
+list([])
+// returns ''
+
+Solution:
+*/
+
+function list(names) {
+  let ans = '';
+
+  for (let i = 0; i < names.length; i++) {
+    i == names.length - 1
+      ? (ans += names[i].name)
+      : i == names.length - 2
+        ? (ans += `${names[i].name} & `)
+        : (ans += `${names[i].name}, `);
+  }
+  return ans;
+}
