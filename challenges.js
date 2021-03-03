@@ -150,8 +150,44 @@ function list(names) {
     i == names.length - 1
       ? (ans += names[i].name)
       : i == names.length - 2
-        ? (ans += `${names[i].name} & `)
-        : (ans += `${names[i].name}, `);
+      ? (ans += `${names[i].name} & `)
+      : (ans += `${names[i].name}, `);
   }
   return ans;
+}
+
+/*
+
+Date: 3.2.21 
+Site: codewars
+Level: 5kyu
+Problem: 
+
+Complete the function scramble(str1, str2) that returns true if a portion of str1 characters can be rearranged to match str2, otherwise returns false.
+
+Notes:
+
+Only lower case letters will be used (a-z). No punctuation or digits will be included.
+Performance needs to be considered
+
+Solution:
+*/
+
+function scramble(str1, str2) {
+  const map = {};
+  if (str1.lenght == str2.length) {
+    return false;
+  }
+  str1.split('').forEach((x) => {
+    !map[x] ? (map[x] = 1) : (map[x] = map[x] + 1);
+  });
+  let result = true;
+  let strArr = str2.split('');
+
+  for (let i = 0; i < strArr.length; i++) {
+    map[strArr[i]] > 0
+      ? (map[strArr[i]] = map[strArr[i]] - 1)
+      : (result = false);
+  }
+  return result;
 }
