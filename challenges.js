@@ -191,3 +191,12 @@ function scramble(str1, str2) {
   }
   return result;
 }
+
+
+
+/*
+
+Date: 3/8/21 
+
+completed live code challenge intw with fig 
+*/
