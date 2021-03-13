@@ -202,3 +202,5 @@ completed live code challenge intw with fig
 */
 
 // 3/9/21 attempted airport sign scramble on codewars 
+
+//3/13/21 attemped give me a diamond in codewars 
